@@ -17,7 +17,7 @@ def find_maximal_subarray_sum(nums: List[int], k: int) -> int:
     with at-least k elements.
     """
     if len(nums) == 0 or k <= 0 or k > len(nums):
-        return "Invalid input: k should be nonzero and less than nonzero array size."
+        raise ValueError
     summ = 0
     for i in range(k):
         summ += nums[i]
