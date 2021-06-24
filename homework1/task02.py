@@ -15,7 +15,7 @@ def check_fibonacci(data: Sequence[int]) -> bool:
     function that checks if the given sequence is a Fibonacci sequence
     returns Bool
     """
-    if len(data) >= 3 and data[1] != 0 and data[0] != 0:
+    if len(data) >= 3 and data[1] != 0 or data[0] != 0:
         for i in range(2, len(data)):
             if data[i - 1] + data[i - 2] != data[i]:
                 return False
