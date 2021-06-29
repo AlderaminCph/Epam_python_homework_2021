@@ -1,5 +1,6 @@
 """
 Given a list of integers numbers "nums".
+
 You need to find a sub-array with length less equal to "k", with maximal sum.
 The written function should return the sum of this sub-array.
 Examples:
@@ -10,11 +11,13 @@ from typing import List
 
 
 def find_maximal_subarray_sum(nums: List[int], k: int) -> int:
-    """
-    function that finds largest subarray sum
-    with at-least k elements in it.
-    Returns maximum sum of a subarray
-    with at-least k elements.
+    """Find largest subarray sum with at-least k elements in it.
+
+    Args:
+        nums: list of integers.
+        k: number of elements of subarray.
+    Returns:
+        maximum sum of a subarray with at-least k elements.
     """
     if len(nums) == 0 or k <= 0 or k > len(nums):
         raise ValueError
