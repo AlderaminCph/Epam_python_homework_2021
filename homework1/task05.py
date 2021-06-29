@@ -20,7 +20,7 @@ def find_maximal_subarray_sum(nums: List[int], k: int) -> int:
         maximum sum of a subarray with at-least k elements.
     """
     if len(nums) == 0 or k <= 0 or k > len(nums):
-        raise ValueError
+        raise ValueError("k should not be greater then the size of list of integers")
     summ = 0
     for i in range(k):
         summ += nums[i]
@@ -32,3 +32,5 @@ def find_maximal_subarray_sum(nums: List[int], k: int) -> int:
         if summ > max_sum:
             max_sum = summ
     return max_sum
+
+

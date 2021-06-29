@@ -15,3 +15,7 @@ def test_find_maximal_subarray_sum(nums: list, k: int, expected_result: int):
     our_result = find_maximal_subarray_sum(nums, k)
 
     assert our_result == expected_result
+
+def test_find_maximal_subarray_sum_exception():
+    with pytest.raises(ValueError):
+        find_maximal_subarray_sum([-2, -5, 6],6)
