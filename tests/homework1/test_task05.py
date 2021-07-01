@@ -20,3 +20,13 @@ def test_find_maximal_subarray_sum(nums: list, k: int, expected_result: int):
 def test_find_maximal_subarray_sum_exception():
     with pytest.raises(ValueError):
         find_maximal_subarray_sum([-2, -5, 6], 6)
+
+
+def test_find_maximal_subarray_sum_negative():
+    with pytest.raises(ValueError):
+        find_maximal_subarray_sum([1, 2, 3], -1)
+
+
+def test_find_maximal_subarray_sum_empty():
+    with pytest.raises(ValueError):
+        find_maximal_subarray_sum([], 1)

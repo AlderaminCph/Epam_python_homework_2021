@@ -11,7 +11,7 @@ from typing import List
 
 
 def find_maximal_subarray_sum(nums: List[int], k: int) -> int:
-    """Find largest subarray sum with at-least k elements in it.
+    """Find largest subarray sum with length less or equal to k elements in it.
 
     Args:
         nums: list of integers.
@@ -20,10 +20,10 @@ def find_maximal_subarray_sum(nums: List[int], k: int) -> int:
         maximum sum of a subarray with at-least k elements.
     """
     if len(nums) == 0 or k <= 0 or k > len(nums):
-        raise ValueError("k should not be greater then the size of list of integers")
-    summ = 0
-    for i in range(k):
-        summ += nums[i]
+        raise ValueError(
+            "k should be positive nonzero value less then the size of list of integers"
+        )
+    summ = sum(nums[0:k])
     max_sum = summ
     start = 0
     for j in range(k, len(nums)):
