@@ -23,12 +23,12 @@ def find_maximal_subarray_sum(nums: List[int], k: int) -> int:
         raise ValueError(
             "k should be positive nonzero value less then the size of list of integers"
         )
-    summ = sum(nums[0:k])
-    max_sum = summ
-    start = 0
-    for j in range(k, len(nums)):
-        summ = summ + nums[j] - nums[start]
-        start += 1
-        if summ > max_sum:
-            max_sum = summ
+    max_sum = 0
+    for i in range(len(nums)):
+        for j in range(i,i+k+1):
+            current_summ = sum(nums[i:j])
+            if current_summ > max_sum:
+                max_sum = current_summ
     return max_sum
+
+
