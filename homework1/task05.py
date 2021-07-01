@@ -25,10 +25,8 @@ def find_maximal_subarray_sum(nums: List[int], k: int) -> int:
         )
     max_sum = 0
     for i in range(len(nums)):
-        for j in range(i,i+k+1):
+        for j in range(i, i + k + 1):
             current_summ = sum(nums[i:j])
             if current_summ > max_sum:
                 max_sum = current_summ
     return max_sum
-
-
