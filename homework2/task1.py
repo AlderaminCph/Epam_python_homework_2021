@@ -136,6 +136,3 @@ def get_most_common_non_ascii_char(file_path: str) -> str:
                 else:
                     chars_dict[token] = 1
     return sorted(chars_dict.items(), reverse=True, key=lambda item: item[1])[0][0]
-
-
-# print(get_longest_diverse_words("data.txt"),get_rarest_char("data.txt"),count_punctuation_chars("data.txt"),count_non_ascii_chars("data.txt"),get_most_common_non_ascii_char("data.txt"))

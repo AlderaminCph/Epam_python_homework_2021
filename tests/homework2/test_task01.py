@@ -1,6 +1,7 @@
 import os
 
 import pytest
+
 from homework2.task1 import *
 
 
