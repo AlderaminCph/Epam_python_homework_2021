@@ -1,5 +1,6 @@
 """
 Given a file containing text. Complete using only default collections:
+
     1) Find 10 longest words consisting from largest amount of unique symbols
     2) Find rarest symbol for document
     3) Count every punctuation char
