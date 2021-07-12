@@ -21,15 +21,15 @@ def get_longest_diverse_words(file_path: str) -> List[str]:
         List[str]: list containing 10 longest words with max amount of unique symbols.
     """
     with open(file_path, "r", encoding="unicode-escape") as file:
-        Ten_longest_unique_words = ["" for x in range(10)]
+        ten_longest_unique_words = ["" for x in range(10)]
         for token in list(tokenizer(file, 0)):
             if token[0] == "word":
-                for i, word in enumerate(Ten_longest_unique_words):
-                    if token[1] not in Ten_longest_unique_words and len(
+                for i, word in enumerate(ten_longest_unique_words):
+                    if token[1] not in ten_longest_unique_words and len(
                         set(token[1])
                     ) > len(set(word)):
-                        Ten_longest_unique_words[i] = token[1]
-    return Ten_longest_unique_words
+                        ten_longest_unique_words[i] = token[1]
+    return ten_longest_unique_words
 
 
 def tokenizer(input_file, char_tokenize_flag):
