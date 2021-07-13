@@ -4,6 +4,7 @@ The most common element is the element that appears more than n // 2 times.
 The least common element is the element that appears fewer than other.
 You may assume that the array is non-empty and the most common element
 always exist in the array.
+
 Example 1:
 Input: [3,2,3]
 Output: 3, 2
