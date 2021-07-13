@@ -36,7 +36,7 @@ def cache(times):
         function with cached values
     """
 
-    def previous_cashe(func):
+    def decorator(func):
 
         cache_dict = defaultdict(dict)
         cache_dict["times"] = times
@@ -53,4 +53,4 @@ def cache(times):
 
         return a_wrapper
 
-    return previous_cashe
+    return decorator
