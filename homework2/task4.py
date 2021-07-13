@@ -27,9 +27,9 @@ def cache(func: Callable) -> Callable:
     """
     cache_dict = defaultdict(dict)
 
-    def a_wrapper_accepting_arbitrary_arguments(*args, **kwargs):
+    def a_wrapper(*args, **kwargs):
         if args not in cache_dict:
-            cache_dict[args] = func(args)
+            cache_dict[args] = func(*args, **kwargs)
         return cache_dict[args]
 
-    return a_wrapper_accepting_arbitrary_arguments
+    return a_wrapper
