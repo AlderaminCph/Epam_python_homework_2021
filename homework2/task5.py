@@ -29,18 +29,12 @@ def my_range_function(iterable_values, stop: str, start=None, step=1):
         raise ValueError("step must be non-zero")
     list_of_values = list(iterable_values)
     if start is None:
-        return list(iterable_values[0 : list_of_values.index(stop) : step])
-    elif step < 0:
-        start, stop = stop, start
-        return list(
-            iterable_values[
-                list_of_values.index(start) : list_of_values.index(stop) : step
-            ]
-        )
+        result = list(iterable_values[0 : list_of_values.index(stop) : step])
     else:
         start, stop = stop, start
-        return list(
+        result = list(
             iterable_values[
                 list_of_values.index(start) : list_of_values.index(stop) : step
             ]
         )
+    return result
