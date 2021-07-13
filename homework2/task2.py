@@ -11,6 +11,7 @@ Example 2:
 Input: [2,2,1,1,1,2,2]
 Output: 2, 1
 """
+from collections import Counter
 from typing import List, Tuple
 
 
@@ -24,11 +25,6 @@ def major_and_minor_elem(inp: List) -> Tuple[int, int]:
     """
     if not inp:
         raise ValueError("input list should be non-empty list.")
-    counter_elements = {}
-    for i in inp:
-        if i in counter_elements:
-            counter_elements[i] += 1
-        else:
-            counter_elements[i] = 1
-    sort_counter_elements = sorted(counter_elements.items(), key=lambda item: item[1])
-    return (sort_counter_elements[-1][0], sort_counter_elements[0][0])
+    most_cmn = Counter(inp).most_common(1)[0][0]
+    least_cmn = Counter(inp).most_common()[: -1 - 1 : -1][0][0]
+    return (most_cmn, least_cmn)
