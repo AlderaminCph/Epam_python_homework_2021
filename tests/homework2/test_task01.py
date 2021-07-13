@@ -26,5 +26,5 @@ from homework2.task1 import *
     ],
 )
 def test_get_longest_diverse_words(file, expected_result: list):
-    our_result = get_longest_diverse_words(file)
-    assert our_result == expected_result
+    actual_result = get_longest_diverse_words(file)
+    assert actual_result == expected_result
