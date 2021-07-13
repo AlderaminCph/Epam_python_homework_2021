@@ -9,7 +9,15 @@ Given a file containing text. Complete using only default collections:
 """
 import string
 import unicodedata
+from collections import defaultdict
 from typing import List
+
+from spacy.lang.de import German
+
+
+def hlper_fnc(ele):
+    """Get uniique elements count (helper function)"""
+    return len(list(set(ele)))
 
 
 def get_longest_diverse_words(file_path: str) -> List[str]:
@@ -20,24 +28,23 @@ def get_longest_diverse_words(file_path: str) -> List[str]:
     Returns:
         List[str]: list containing 10 longest words with max amount of unique symbols.
     """
+    nlp = German()
     with open(file_path, "r", encoding="unicode-escape") as file:
-        ten_longest_unique_words = ["" for x in range(10)]
-        for token in list(tokenizer(file, 0)):
-            if token[0] == "word":
-                for i, word in enumerate(ten_longest_unique_words):
-                    if token[1] not in ten_longest_unique_words and len(
-                        set(token[1])
-                    ) > len(set(word)):
-                        ten_longest_unique_words[i] = token[1]
+        german_text = file.read()
+        doc = nlp(german_text)
+        tokens = [token.text for token in doc]
+        words = [toc for toc in tokens if unicodedata.category(toc[0]).startswith("L")]
+        words.sort(key=hlper_fnc, reverse=True)
+        ten_longest_unique_words = words[:10]
     return ten_longest_unique_words
 
 
-def tokenizer(input_file, char_tokenize_flag):
+def char_tokenize(input_file):
     """Split an entire text from input file into small units, also known as tokens.
 
     Args:
         input_file: file with text to tokenize
-        char_tokenize_flag: if char_tokenize_flag = 1 tokenize characters
+        char_tokenize_flag: if char_tokenize_flag = True tokenize characters
     Returns:
         tokens with their type (word, punctuation or whitespace) and value
     """
@@ -50,24 +57,7 @@ def tokenizer(input_file, char_tokenize_flag):
             continue
         if not char:
             break
-        if char_tokenize_flag == 1:
-            yield char
-        else:
-            if unicodedata.category(char).startswith("P"):
-                if buffer:
-                    yield ("word", buffer)
-                    buffer = ""
-                yield ("punctuation", char)
-                continue
-            if char in string.whitespace:
-                if buffer:
-                    yield ("word", buffer)
-                    buffer = ""
-                yield ("whitespace", char)
-                continue
-            buffer += char
-        if buffer:
-            yield ("word", buffer)
+        yield char
 
 
 def get_rarest_char(file_path: str) -> str:
@@ -79,12 +69,9 @@ def get_rarest_char(file_path: str) -> str:
         rarest_char: string
     """
     with open(file_path, "r", encoding="unicode-escape") as file:
-        chars_dict = dict()
-        for token in list(tokenizer(file, 1)):
-            if token in chars_dict:
-                chars_dict[token] += 1
-            else:
-                chars_dict[token] = 1
+        chars_dict = defaultdict(int)
+        for token in list(char_tokenize(file)):
+            chars_dict[token] += 1
     return sorted(chars_dict.items(), key=lambda item: item[1])[0][0]
 
 
@@ -97,10 +84,11 @@ def count_punctuation_chars(file_path: str) -> int:
         int: the number of punctuation characters
     """
     with open(file_path, "r", encoding="unicode-escape") as file:
-        chars_counter = 0
-        for token in list(tokenizer(file, 1)):
-            if unicodedata.category(token).startswith("P"):
-                chars_counter += 1
+        chars_counter = sum(
+            1
+            for token in list(char_tokenize(file))
+            if unicodedata.category(token).startswith("P")
+        )
     return chars_counter
 
 
@@ -113,10 +101,11 @@ def count_non_ascii_chars(file_path: str) -> int:
         int: the number of  non ascii characters
     """
     with open(file_path, "r", encoding="unicode-escape") as file:
-        chars_counter = 0
-        for token in list(tokenizer(file, 1)):
-            if token.isascii() == False and token not in string.whitespace:
-                chars_counter += 1
+        chars_counter = sum(
+            1
+            for token in list(char_tokenize(file))
+            if token.isascii() == False and token not in string.whitespace
+        )
     return chars_counter
 
 
@@ -129,11 +118,8 @@ def get_most_common_non_ascii_char(file_path: str) -> str:
         str: the most common non ascii char for document
     """
     with open(file_path, "r", encoding="unicode-escape") as file:
-        chars_dict = dict()
-        for token in list(tokenizer(file, 1)):
+        chars_dict = defaultdict(int)
+        for token in list(char_tokenize(file)):
             if token.isascii() == False and token not in string.whitespace:
-                if token in chars_dict:
-                    chars_dict[token] += 1
-                else:
-                    chars_dict[token] = 1
+                chars_dict[token] += 1
     return sorted(chars_dict.items(), reverse=True, key=lambda item: item[1])[0][0]
