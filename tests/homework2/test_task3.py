@@ -16,4 +16,4 @@ def test_combinations(input_lists, expected_lists):
 
 def test_combinations_empty_list():
     with pytest.raises(ValueError):
-        combinations([])
+        combinations()
