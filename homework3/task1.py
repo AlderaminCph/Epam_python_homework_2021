@@ -40,16 +40,15 @@ def cache(times):
 
         cache_dict = defaultdict(dict)
 
-
         def a_wrapper(*args, **kwargs):
-            print("args ",*args)
+            print("args ", *args)
             if args in cache_dict and cache_dict[args][1] != 0:
                 cache_dict[args][1] -= 1
             if args not in cache_dict or (
                 args in cache_dict and cache_dict[args][1] == 0
             ):
                 cache_dict[args] = [func(*args, **kwargs), times]
-            print('cache_dict ',cache_dict)
+            print("cache_dict ", cache_dict)
             return cache_dict[args][0]
 
         return a_wrapper
