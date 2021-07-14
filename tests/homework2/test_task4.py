@@ -23,3 +23,12 @@ def test_cache_several_arguments(arguments):
     mock_function = cache(mock_function)
     mock_function(arguments)
     assert input_function.call_count == 1
+
+
+def test_cashe_without_arguments():
+    mock_function = mock.Mock()
+    input_function = mock_function
+    mock_function = cache(mock_function)
+    mock_function()
+    mock_function()
+    assert input_function.call_count == 1
