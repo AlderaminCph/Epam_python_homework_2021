@@ -39,17 +39,18 @@ def cache(times):
     def decorator(func):
 
         cache_dict = defaultdict(dict)
-        cache_dict["times"] = times
+
 
         def a_wrapper(*args, **kwargs):
-            result = tuple(args)
-            if result in cache_dict and cache_dict[result][1] != 0:
-                cache_dict[result][1] -= 1
-            if result not in cache_dict or (
-                result in cache_dict and cache_dict[result][1] == 0
+            print("args ",*args)
+            if args in cache_dict and cache_dict[args][1] != 0:
+                cache_dict[args][1] -= 1
+            if args not in cache_dict or (
+                args in cache_dict and cache_dict[args][1] == 0
             ):
-                cache_dict[result] = [func(*args, **kwargs), times]
-            return cache_dict[result][0]
+                cache_dict[args] = [func(*args, **kwargs), times]
+            print('cache_dict ',cache_dict)
+            return cache_dict[args][0]
 
         return a_wrapper
 
