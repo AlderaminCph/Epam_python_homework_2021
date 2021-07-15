@@ -20,6 +20,7 @@ import random
 import struct
 import time
 from multiprocessing import Pool
+import multiprocessing
 
 
 def slow_calculate(value):
@@ -38,7 +39,7 @@ def my_calculation(numbers, func):
     Returns:
         total sum
     """
-    pool = Pool(60)
+    pool = Pool(200)
     return sum(pool.map(func, numbers))
 
 
