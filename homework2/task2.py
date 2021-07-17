@@ -27,5 +27,5 @@ def major_and_minor_elem(inp: List) -> Tuple[int, int]:
     if not inp:
         raise ValueError("input list should be non-empty list.")
     most_cmn = Counter(inp).most_common(1)[0][0]
-    least_cmn = Counter(inp).most_common()[: -1 - 1 : -1][0][0]
+    least_cmn = Counter(inp).most_common()[-1][0]
     return (most_cmn, least_cmn)
