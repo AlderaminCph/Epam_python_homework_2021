@@ -26,10 +26,12 @@ def cache(func: Callable) -> Callable:
     should be cached.
     """
     cache_dict = defaultdict(dict)
+    func_name = func.__name__
 
-    def a_wrapper(*args, **kwargs):
-        if args not in cache_dict:
-            cache_dict[args] = func(*args, **kwargs)
-        return cache_dict[args]
+    def a_wrapper(args=None, kwargs=None):
+        key = " ".join(str(i) for i in [func_name, str(args), str(kwargs)])
+        if key not in cache_dict:
+            cache_dict[key] = func(args, kwargs)
+        return cache_dict[key]
 
     return a_wrapper
