@@ -14,9 +14,9 @@ from typing import List
 from spacy.lang.de import German
 
 
-def hlper_fnc(ele):
+def helper_function(elements):
     """Get uniique elements count (helper function)"""
-    return len(list(set(ele)))
+    return len(set(elements))
 
 
 def get_longest_diverse_words(file_path: str) -> List[str]:
@@ -33,7 +33,7 @@ def get_longest_diverse_words(file_path: str) -> List[str]:
         doc = nlp(german_text)
         tokens = [token.text for token in doc]
         words = [toc for toc in tokens if unicodedata.category(toc[0]).startswith("L")]
-        words.sort(key=hlper_fnc, reverse=True)
+        words.sort(key=helper_function, reverse=True)
         ten_longest_unique_words = words[:10]
     return ten_longest_unique_words
 
