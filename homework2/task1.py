@@ -14,7 +14,7 @@ from typing import List
 from spacy.lang.de import German
 
 
-def helper_function(elements):
+def helper_function(elements: str) -> int:
     """Get uniique elements count (helper function)"""
     return len(set(elements))
 
