@@ -24,7 +24,6 @@ def combinations(*args: List[Any]) -> List[List]:
     Return:
         Output Lists
     """
-    # for arg in args:
     if not args:
         raise ValueError("input list should be non-empty list")
     new_lists = [[]]
