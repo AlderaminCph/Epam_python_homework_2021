@@ -1,4 +1,3 @@
-
 """
 Write a function that accepts an URL as input
 and count how many letters `i` are present in the HTML by this URL.
@@ -20,7 +19,24 @@ You will learn:
 59
 * https://docs.python.org/3/library/urllib.request.html#urllib.request.urlopen
 """
+import urllib.request
 
 
 def count_dots_on_i(url: str) -> int:
-    ...
+    """Accepts an URL as input
+    and count how many letters `i` are present in the HTML by this URL
+
+    Args:
+        url: input url
+    Returns:
+        int: integer number
+    """
+    try:
+        with urllib.request.urlopen(url) as response:
+            html = response.read().decode()
+        return html.count("i")
+    except:
+        raise ValueError(f"Unreachable {url}")
+
+
+# print(count_dots_on_i('https://en.wikipedia.org/wiki/Carrier-sense_multiple_access_with_collision_avoidance'))
