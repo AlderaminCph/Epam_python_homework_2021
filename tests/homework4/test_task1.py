@@ -11,7 +11,7 @@ def create_input_file(file_path: str, value: str) -> None:
 
     Args:
         file_path: path to file
-        value: value to write in file
+        value: value that would be written in file
     """
     with open(file_path, "w") as file:
         file.write(value)

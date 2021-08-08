@@ -1,5 +1,6 @@
 """
 Write a function that gets file path as an argument.
+
 Read the first line of the file.
 If first line is a number return true if number in an interval [1, 3)*
 and false otherwise.
