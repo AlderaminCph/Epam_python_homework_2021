@@ -1,4 +1,3 @@
-
 """
 Write a function that gets file path as an argument.
 Read the first line of the file.
@@ -26,4 +25,23 @@ You will learn:
 
 
 def read_magic_number(path: str) -> bool:
-    ...
+    """Check if first line of a file is a number in an interval [1, 3)
+
+    >>> read_magic_number(1.5)
+    True
+
+    >>> read_magic_number(3)
+    False
+
+    Args:
+        path: file path
+    Returns:
+        bool: True if first line of a file is a number in an interval [1, 3) and
+        False otherwise
+    """
+    try:
+        with open(path, "r") as input_file:
+            first_line = float(input_file.readline())
+            return 1 <= first_line < 3
+    except Exception:
+        raise ValueError
