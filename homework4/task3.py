@@ -15,7 +15,19 @@ You will learn:
  - how to write to stderr
  - how to test output to the stderr and stdout
 """
+import sys
 
 
 def my_precious_logger(text: str):
-    pass
+    """Receive a string and write it to stderr
+    if line starts with "error" and to the stdout otherwise.
+
+    Args:
+        text: a string of text
+    Returns:
+        None
+    """
+    if text[:5] == "error":
+        return sys.stderr.write(text)
+    else:
+        return sys.stdout.write(text)
