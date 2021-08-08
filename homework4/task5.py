@@ -12,10 +12,9 @@ Definition of done:
 * https://en.wikipedia.org/wiki/Fizz_buzz
 ** https://www.youtube.com/watch?v=NSzsYWckGd4
 """
-from typing import Generator, List
 
 
-def fizzbuzz(n: int) -> Generator[str]:
+def fizzbuzz(n: int):
     """Generator that takes a number N as an input
     and returns a generator that yields N FizzBuzz numbers
 
