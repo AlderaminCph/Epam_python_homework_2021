@@ -25,19 +25,18 @@ def my_range_function(iterable_values, arg1: str, arg2=None, step=1):
     Returns:
         Sequence of iterable values from start to stop by step
     """
-    list_of_values = list(iterable_values)
     if step == 0:
         raise ValueError("step must be non-zero")
-    if arg2 and arg2 not in list_of_values or arg1 not in list_of_values:
+    if arg2 and arg2 not in iterable_values or arg1 not in iterable_values:
         raise ValueError("arguments are beyond limits of iterable values")
     if arg2:
         start = arg1
         stop = arg2
-        index_start = list_of_values.index(start)
+        index_start = iterable_values.index(start)
     else:
         index_start = 0
         stop = arg1
-    index_stop = list_of_values.index(stop)
+    index_stop = iterable_values.index(stop)
     print("index_start = ", index_start)
     print("index_stop = ", index_stop)
     return list(iterable_values[index_start:index_stop:step])
