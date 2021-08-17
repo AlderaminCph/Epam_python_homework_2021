@@ -34,7 +34,7 @@ def fizzbuzz(n: int) -> List[str]:
 
     """
     fizz_buzz = []
-    if not type(n) is int:
+    if type(n) is not int:
         raise TypeError("'float' object cannot be interpreted as an integer")
     else:
         for i in range(1, n + 1):
