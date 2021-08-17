@@ -37,13 +37,7 @@ import datetime
 
 
 class Homework:
-    """Homework class.
-
-    Attributes:
-        text (str): Text of task.
-        deadline (:obj:'int'): Number of days to complete the task.
-        created (datetime): Exact date and time of creation.
-    """
+    """Homework class."""
 
     def __init__(self, text: str, deadline: int, created: datetime):
         self.text = text
