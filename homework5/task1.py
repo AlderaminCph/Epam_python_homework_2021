@@ -75,7 +75,7 @@ class Person:
 
 
 class Student(Person):
-    """Class Student inherit the properties from the Person class.
+    """Class Student.
 
     Attributes:
         last_name (str): Last Name.
@@ -96,7 +96,7 @@ class Student(Person):
 
 
 class Teacher(Person):
-    """Class Teacher inherit the properties from the Person class.
+    """Class Teacher.
 
     Attributes:
         last_name (str): Last Name.
