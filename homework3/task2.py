@@ -43,4 +43,4 @@ def my_calculation(numbers, func):
 
 
 if __name__ == "__main__":
-    print(my_calculation(list(range(0, 501)), slow_calculate))
+    print(my_calculation(range(0, 501), slow_calculate))
