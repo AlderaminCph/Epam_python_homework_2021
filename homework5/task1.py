@@ -39,7 +39,7 @@ import datetime
 class Homework:
     """Homework class."""
 
-    def __init__(self, text: str, deadline: int, created: datetime):
+    def __init__(self, text: str, deadline: datetime.timedelta, created: datetime):
         self.text = text
         self.deadline = deadline
         self.created = created
