@@ -40,5 +40,4 @@ def my_range_function(iterable_values, arg1: str, arg2=None, step=1):
     index_stop = list_of_values.index(stop)
     print("index_start = ", index_start)
     print("index_stop = ", index_stop)
-    result = list(iterable_values[index_start:index_stop:step])
-    return result
+    return list(iterable_values[index_start:index_stop:step])
