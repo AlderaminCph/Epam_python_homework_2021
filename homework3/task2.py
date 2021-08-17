@@ -16,7 +16,6 @@ def slow_calculate(value):
 Calculate total sum of slow_calculate() of all numbers starting from 0 to 500. Calculation time should not take more than a minute. Use functional capabilities of multiprocessing module. You are not allowed to modify slow_calculate function.
 '''
 import hashlib
-import multiprocessing
 import random
 import struct
 import time
