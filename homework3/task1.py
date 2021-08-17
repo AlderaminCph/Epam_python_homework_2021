@@ -38,7 +38,7 @@ def cache(times):
 
     def decorator(func):
 
-        cache_dict = defaultdict(dict)
+        cache_dict = defaultdict(list)
 
         def a_wrapper(*args, **kwargs):
             print("args ", *args)
