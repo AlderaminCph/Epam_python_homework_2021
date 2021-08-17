@@ -23,7 +23,7 @@ def is_armstrong(number: int) -> bool:
         the Bool
     """
     return number == sum(
-        list(map(lambda x: x ** len(str(number)), [int(x) for x in str(number)]))
+        map(lambda x: x ** len(str(number)), [int(x) for x in str(number)])
     )
 
 
