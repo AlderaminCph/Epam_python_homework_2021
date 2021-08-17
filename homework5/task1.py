@@ -106,4 +106,4 @@ class Teacher(Person):
         Returns:
             an instance of Homework
         """
-        return Homework(text, deadline, datetime.datetime.now())
+        return Homework(text, datetime.datetime(deadline), datetime.datetime.now())
