@@ -38,8 +38,8 @@ def my_calculation(numbers, func):
     Returns:
         total sum
     """
-    pool = Pool(200)
-    return sum(pool.map(func, numbers))
+    with Pool(200) as p:
+        return sum(p.map(func, numbers))
 
 
 if __name__ == "__main__":
